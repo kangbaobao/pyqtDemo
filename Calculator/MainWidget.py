@@ -104,18 +104,25 @@ class MianWiget(QWidget):
 				print("repay : ",repay==QMessageBox.No);
 		elif index ==1:
 		 # 正负号处理 从stackList中获取最后一个数字
-			pass
+			self.fuhaohandler()
+			# pass
 		else:
+			#数值和符号
 			if self.is_number(btn.text()):
 				if len(self.stackList)>0:
-					last = self.stackList.pop()
-					self.stackList.append(''+last+btn.text())
+					if self.is_number(self.stackList[len(self.stackList)-1]):
+						last = self.stackList.pop()
+						print("last : ", last)
+
+						self.stackList.append(''+last+btn.text())
+					else:
+						self.stackList.append(btn.text())
 				else:
 					self.stackList.append(btn.text())
 			else:
 				self.stackList.append(btn.text())
 			print("stackList : ",self.stackList)
-			s = ' '.join(self.stackList)
+			s = ''.join(self.stackList)
 			self.showLab.setText(s)
 
 	# 教程代码当出现多个汉字数字时会报错，通过遍历字符串解决
@@ -135,3 +142,32 @@ class MianWiget(QWidget):
 		except (TypeError, ValueError):
 			pass
 		return False
+	# 正负号处理
+	def fuhaohandler(self):
+		if len(self.stackList) > 0:
+			# 列表逆向
+			# newList = self.stackList.copy();
+			# newList.reverse()
+			self.stackList.reverse()
+			for index, value in enumerate(self.stackList):
+				if self.is_number(value):
+					# 正数取负数，负数变正数
+					newVlaue = float(value)
+					if newVlaue > 0:
+						# self.stackList.pop(len(newList)-index-1)
+						# self.stackList.insert(len(newList)-index-1,'-%0.0f' % newVlaue)
+						self.stackList.pop(index)
+						self.stackList.insert(index,'-%0.0f' % newVlaue)
+						break;
+					elif newVlaue == 0:
+						break;
+					else:
+						# self.stackList.pop(len(newList)-index-1)
+						# self.stackList.insert(len(newList)-index-1,str(abs(newVlaue)))
+						self.stackList.pop(index )
+						self.stackList.insert(index, str(abs(newVlaue)))
+						break;
+			self.stackList.reverse()
+			print("self.stackList : ",self.stackList)
+			s = ''.join(self.stackList)
+			self.showLab.setText(s)
