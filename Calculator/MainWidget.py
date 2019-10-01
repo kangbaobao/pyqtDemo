@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget,QVBoxLayout,QLabel,QHBoxLayout,QGridLayout,QPushButton
+from PyQt5.QtWidgets import QWidget,QVBoxLayout,QLabel,QHBoxLayout,QGridLayout,QPushButton,QMessageBox
 from  PyQt5.QtCore import QSize
 from PyQt5.QtGui import QPalette,QColor,QFont
 from  PyQt5.Qt import Qt
@@ -17,6 +17,8 @@ class MianWiget(QWidget):
 						'0', '.', '=',
 						];
 		self.setupUI()
+		#计算处理
+		self.stackList = [];
 
 	def setupUI(self):
 		# 主布局
@@ -51,7 +53,6 @@ class MianWiget(QWidget):
 		# bottomLayout.setSpacing(5)
 		bottomLayout.setContentsMargins(5,5,5,0)
 		mainLayout.addLayout(bottomLayout,1)
-		# mainLayout.addStretch(1)
 
 		for index,value in enumerate(self.strList):
 			btn = QPushButton()
@@ -83,3 +84,54 @@ class MianWiget(QWidget):
 	def btnMyAction(self,btn,index):
 		print(btn.objectName())
 		print("index : ",index)
+		if index == 0:
+			# 清空数据处理
+			self.stackList.clear()
+			self.showLab.setText('0')
+		elif index ==18:
+			try:
+				# 计算处理
+				s = ' '.join(self.stackList)
+				print('s : ',s)
+				value = eval(s)
+				print('value:',value )
+				self.stackList.clear()
+				self.stackList.append(str(value))
+				self.showLab.setText(str(value))
+			except Exception as e :
+			# 发生异常，执行这块代码
+				repay = QMessageBox.warning(self,'title',str(e),QMessageBox.Yes|QMessageBox.No,QMessageBox.Yes)
+				print("repay : ",repay==QMessageBox.No);
+		elif index ==1:
+		 # 正负号处理 从stackList中获取最后一个数字
+			pass
+		else:
+			if self.is_number(btn.text()):
+				if len(self.stackList)>0:
+					last = self.stackList.pop()
+					self.stackList.append(''+last+btn.text())
+				else:
+					self.stackList.append(btn.text())
+			else:
+				self.stackList.append(btn.text())
+			print("stackList : ",self.stackList)
+			s = ' '.join(self.stackList)
+			self.showLab.setText(s)
+
+	# 教程代码当出现多个汉字数字时会报错，通过遍历字符串解决
+	# 对汉字表示的数字也可分辨
+	def is_number(self,s):
+		try:  # 如果能运行float(s)语句，返回True（字符串s是浮点数）
+			float(s)
+			return True
+		except ValueError:  # ValueError为Python的一种标准异常，表示"传入无效的参数"
+			pass  # 如果引发了ValueError这种异常，不做任何事情（pass：不做任何事情，一般用做占位语句）
+		try:
+			import unicodedata  # 处理ASCii码的包
+			for i in s:
+				unicodedata.numeric(i)  # 把一个表示数字的字符串转换为浮点数返回的函数
+			# return True
+			return True
+		except (TypeError, ValueError):
+			pass
+		return False
