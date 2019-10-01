@@ -91,7 +91,7 @@ class MianWiget(QWidget):
 		elif index ==18:
 			try:
 				# 计算处理
-				s = ' '.join(self.stackList)
+				s = ''.join(self.stackList)
 				print('s : ',s)
 				value = eval(s)
 				print('value:',value )
