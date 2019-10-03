@@ -7,6 +7,10 @@ class MianWiget(QWidget):
 	def __init__(self,parent=None):
 		super().__init__(parent);
 		self.setFixedSize(QSize(250,330))
+        #阻止窗口最大最小化
+        # w.setWindowFlag(~Qt.WindowMinimizeButtonHint)#and ~ Qt.WindowMinimizeButtonHint Qt.WindowMaximizeButtonHint
+        # PyQT禁止调整窗口大小：
+        #w.setFixedSize(w.width(),w.height())
 		palette = QPalette()
 		palette.setColor(QPalette.Background,QColor().fromRgb(68,69,73))
 		self.setPalette(palette)
