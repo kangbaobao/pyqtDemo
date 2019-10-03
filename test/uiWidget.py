@@ -121,7 +121,6 @@ def lineEditTest(p):
 # QTextEdit 多行文本输入
 def textEditTest(p):
 	textEdit = QTextEdit(p)
-
 	textEdit.setPlaceholderText('输入内容')
 	# 普通文本设定
 	textEdit.setPlainText('''九月 海子
@@ -135,11 +134,8 @@ def textEditTest(p):
 明月如镜 高悬草原 映照千年岁月
 我的琴声呜咽 泪水全无
 只身打马过草原''')
-	# textEdit.setAlignment(Qt.AlignCenter)
 	# b.html标签文本设定，用法和普通文本一样。
 	# textEdit.insertHtml("<a href='http://www.baidu.com'> 百度</a>")  # 插入html文本（超链接）
-
-
 	# QTextEdit.append('str')  # 文本追加（不管光标位置）
 	# QTextEdit.clear()  # 文本清除
 
