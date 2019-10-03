@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QApplication,QWidget,QPushButton
 # from PyQt5.QtGui import
 from  PyQt5.Qt import Qt
 import sys
-from PyQt5.QtCore import QRect
+from PyQt5.QtCore import QRect,QPoint,QSize
 
 
 def btnAtion():
