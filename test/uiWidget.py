@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QApplication,QLabel,QWidget,QLineEdit,QAction
+from PyQt5.QtWidgets import QApplication,QLabel,QWidget,QLineEdit,QAction,QCompleter
 from PyQt5.QtGui import QPalette,QColor,QFont,QPixmap,QBrush,QIntValidator,QDoubleValidator,QRegExpValidator,QIcon
 from PyQt5.QtCore import QRect,QRegExp,QMargins
 from PyQt5.Qt import Qt
@@ -56,6 +56,17 @@ def createLab(p):
 
 
 #QLineEdit
+#槽函数
+def lineTextChange(str):
+	print("TextChange:",str)
+def linereturnPressed():
+	print('linereturnPressed...')
+def lineselectionChanged(line):
+	print('lineselectionChanged:',line.selectedText())
+
+def linecursorPositionChanged( old,new ):
+	print('linecursorPositionChanged old: {} new: {}'.format(old,new))
+
 def lineEditTest(p):
 	line = QLineEdit(p)
 	line.move(20,40)
@@ -67,7 +78,7 @@ def lineEditTest(p):
 	# 设置为只读，不可编辑
 	# line.setReadOnly(True)
 	# 最大输入字符
-	line.setMaxLength(10)
+	# line.setMaxLength(10)
 	# 设置文本验证规则
 	# # 整型验证器
 	# intV = QIntValidator()
@@ -89,9 +100,25 @@ def lineEditTest(p):
 	regV = QRegExpValidator(reg)
 	line.setValidator(regV)
 	# 显示密码
-	line.setEchoMode(QLineEdit.Password)
+	# line.setEchoMode(QLineEdit.Password)
 	#设置文字外边距 QMargins(int left,int top, int right, int bottom)
 	line.setTextMargins(QMargins(20,5,5,5))
+	# 显示清除按钮
+	line.setClearButtonEnabled(True)
+	# 自动补全
+	com = QCompleter(['aaa','bbb','cccc'])
+	line.setCompleter(com)
+	# 事件
+	#文本发生变化时，发出信号
+	line.textChanged.connect(lineTextChange)
+	# 光标在行编辑框内时，点击回车即发出信号
+	line.returnPressed.connect(linereturnPressed)
+	#  选择的文本发生变化时，发出信号
+	line.selectionChanged.connect(lambda :lineselectionChanged(line))
+	# 光标位置改变就发现信号.
+	line.cursorPositionChanged.connect(linecursorPositionChanged)
+
+
 if __name__ == '__main__':
 	app = QApplication(sys.argv)
 	w = QWidget()
