@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QApplication,QLabel,QWidget,QLineEdit,QAction,QCompleter
+from PyQt5.QtWidgets import QApplication,QLabel,QWidget,QLineEdit,QAction,QCompleter,QTextEdit
 from PyQt5.QtGui import QPalette,QColor,QFont,QPixmap,QBrush,QIntValidator,QDoubleValidator,QRegExpValidator,QIcon
 from PyQt5.QtCore import QRect,QRegExp,QMargins
 from PyQt5.Qt import Qt
@@ -118,13 +118,38 @@ def lineEditTest(p):
 	# 光标位置改变就发现信号.
 	line.cursorPositionChanged.connect(linecursorPositionChanged)
 
+# QTextEdit 多行文本输入
+def textEditTest(p):
+	textEdit = QTextEdit(p)
+
+	textEdit.setPlaceholderText('输入内容')
+	# 普通文本设定
+	textEdit.setPlainText('''九月 海子
+目击众神死亡的草原上野花一片 
+远在远方的风比远方更远
+我的琴声呜咽 泪水全无
+我把这远方的远归还草原
+一个叫木头 一个叫马尾
+我的琴声呜咽 泪水全无
+远方只有在死亡中凝聚野花一片
+明月如镜 高悬草原 映照千年岁月
+我的琴声呜咽 泪水全无
+只身打马过草原''')
+	# textEdit.setAlignment(Qt.AlignCenter)
+	# b.html标签文本设定，用法和普通文本一样。
+	# textEdit.insertHtml("<a href='http://www.baidu.com'> 百度</a>")  # 插入html文本（超链接）
+
+
+	# QTextEdit.append('str')  # 文本追加（不管光标位置）
+	# QTextEdit.clear()  # 文本清除
 
 if __name__ == '__main__':
 	app = QApplication(sys.argv)
 	w = QWidget()
 
 	# createLab(w)
-	lineEditTest(w)
+	# lineEditTest(w)
+	textEditTest(w)
 	w.show()
 	sys.exit(app.exec_())
 
