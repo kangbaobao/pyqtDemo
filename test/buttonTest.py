@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QApplication,QWidget,QPushButton,QCheckBox,\
-	QRadioButton,QMenu,QAction,QButtonGroup
+	QRadioButton,QMenu,QAction,QButtonGroup,QComboBox
 from PyQt5.QtGui import QIcon,QPixmap
 from PyQt5.QtCore import QSize
 import sys
@@ -79,13 +79,28 @@ def radioButtonTest(p):
 	zu1.setExclusive(False) #是否独占
 	zu1.buttonToggled[int,bool].connect(zuButtonToggledHandler)
 
+# 下拉框
+def comboBoxselectionchange(id):
+	print("id ",id)
+def comboBoxTest(p):
+	cb = QComboBox(p)
+	cb.addItem("C")
+	cb.addItem("C++")
+	cb.addItems(["Java", "C#", "Python"])
+	#  默认选中那个
+	cb.setCurrentIndex(3)
+
+	# cb.currentIndex()
+	# 下拉索引发生改变触发
+	cb.currentIndexChanged[int].connect(comboBoxselectionchange)
 
 if __name__ == '__main__':
 	app = QApplication(sys.argv)
 	w = QWidget()
 	# menuPushButton(w)
 	# pushButtonTest(w)
-	radioButtonTest(w)
+	# radioButtonTest(w)
+	comboBoxTest(w)
 	w.show()
 	sys.exit(app.exec_())
 

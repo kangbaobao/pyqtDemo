@@ -1,5 +1,7 @@
-from PyQt5.QtWidgets import QApplication,QLabel,QWidget,QLineEdit,QAction,QCompleter,QTextEdit
-from PyQt5.QtGui import QPalette,QColor,QFont,QPixmap,QBrush,QIntValidator,QDoubleValidator,QRegExpValidator,QIcon
+from PyQt5.QtWidgets import QApplication,QLabel,QWidget,\
+	QLineEdit,QAction,QCompleter,QTextEdit,QSlider
+from PyQt5.QtGui import QPalette,QColor,QFont,QPixmap,\
+	QBrush,QIntValidator,QDoubleValidator,QRegExpValidator,QIcon
 from PyQt5.QtCore import QRect,QRegExp,QMargins
 from PyQt5.Qt import Qt
 import sys
@@ -139,13 +141,39 @@ def textEditTest(p):
 	# QTextEdit.append('str')  # 文本追加（不管光标位置）
 	# QTextEdit.clear()  # 文本清除
 
+#slider
+def sliderValuechange(value):
+	print('current slider value:',value)
+
+
+def sliderTest(p):
+	sl = QSlider()#(Qt.Horizontal)
+	sl.setParent(p)
+	# 水平方向
+	sl.setOrientation(Qt.Horizontal)
+	# 设置最小值
+	sl.setMinimum(10)
+	# 设置最大值
+	sl.setMaximum(50)
+	# 步长
+	sl.setSingleStep(3)
+	# 设置当前值
+	sl.setValue(20)
+	sl.setGeometry(10,20,200,30)
+	# 刻度位置
+	sl.setTickPosition(QSlider.NoTicks)
+	# 设置刻度间隔
+	sl.setTickInterval(5)
+	# 连接信号槽
+	sl.valueChanged[int].connect(sliderValuechange)
 if __name__ == '__main__':
 	app = QApplication(sys.argv)
 	w = QWidget()
 
 	# createLab(w)
 	# lineEditTest(w)
-	textEditTest(w)
+	# textEditTest(w)
+	sliderTest(w)
 	w.show()
 	sys.exit(app.exec_())
 
