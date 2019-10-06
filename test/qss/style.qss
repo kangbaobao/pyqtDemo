@@ -1,0 +1,11 @@
+QMainWindow{
+		border-image:url(../image/python.jpg);
+
+}
+
+QToolTip{
+		border: 1px solid rgb(45, 45, 45);
+		background: white;
+		color: red;
+
+}
