@@ -19,7 +19,7 @@ def createLab(p):
 	p.setColor(QPalette.WindowText, Qt.white)
 	#QPalette设置背景图片
 	pixmap =  QPixmap('./image/img1.jpeg')
-	pixmap.scaled(lab.width(),lab.height(),Qt.KeepAspectRatio)
+	# pixmap.scaled(lab.width(),lab.height(),Qt.KeepAspectRatio)
 	# p.setBrush(QPalette.Background, QBrush(pixmap));#lab.backgroundRole()
 	lab.setPalette(p)
 	# 在设置对话框和控件的背景色时还会用到
