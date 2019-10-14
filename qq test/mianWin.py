@@ -1,8 +1,9 @@
 from PyQt5.QtWidgets import QWidget,QVBoxLayout,QLabel,QHBoxLayout,\
 	QLineEdit,QPushButton,QGridLayout,QRadioButton,QButtonGroup
-from PyQt5.QtGui import QPixmap,QRegExpValidator,QIcon
-from PyQt5.QtCore import QMargins,QRegExp
+from PyQt5.QtGui import QPixmap,QRegExpValidator,QIcon,QDesktopServices
+from PyQt5.QtCore import QMargins,QRegExp,QUrl
 from PyQt5.Qt import Qt
+from ImageWidget import ImageWidget
 class MainWidget(QWidget):
 	def __init__(self,p=None):
 		super().__init__(p)
@@ -13,12 +14,16 @@ class MainWidget(QWidget):
 		self.initUI()
 		self.setStyleSheet('''
 		QLineEdit {
+			border:none;
 			background:transparent;
-			border-style:outset	;
 			border-bottom:1px solid #999999;
 		}
-
+		QAbstractButton {
+			border:none;
+			font-size:12pt
+		}
 		''')
+	# 				border-style:outset	;
 	def initUI(self):
 		mainLayout= QVBoxLayout()
 
@@ -29,22 +34,22 @@ class MainWidget(QWidget):
 		topLayout = QHBoxLayout()
 		topLayout.setContentsMargins(0,24,0,0)
 		mainLayout.addLayout(topLayout)
-		self.imgLab = QLabel()
+		self.imgLab = ImageWidget()#QLabel()
 
-		pixmap = QPixmap('./img1.jpeg')
+		# pixmap = QPixmap('./img1.jpeg')
 		# self.imgLab.setPixmap(pixmap)
-		self.imgLab.setScaledContents(True)
+		# self.imgLab.setScaledContents(True)
 		topLayout.addWidget(self.imgLab,Qt.AlignCenter)
-		self.imgLab.setFixedSize(80,80)
-		self.imgLab.setProperty('key','imglab')
-		#注意一定要使用border-image,
-		# 使用background-image就会出现窗口放大，背景图片过小重叠的现象
-		self.imgLab.setStyleSheet('''
-		  QLabel[key=imglab]{
-		  	border-radius:40;
-			border-image: url(./img1.jpeg);
-				}
-		''')
+		# self.imgLab.setFixedSize(80,80)
+		# self.imgLab.setProperty('key','imglab')
+		# #注意一定要使用border-image,
+		# # 使用background-image就会出现窗口放大，背景图片过小重叠的现象
+		# self.imgLab.setStyleSheet('''
+		#   QLabel[key=imglab]{
+		#   	border-radius:40;
+		# 	border-image: url(./img1.jpeg);
+		# 		}
+		# ''')
 		inputLayout = QVBoxLayout()
 		mainLayout.addLayout(inputLayout)
 		userNameEdit = QLineEdit()
@@ -109,6 +114,7 @@ class MainWidget(QWidget):
 
 		forgetPsdBtn = QPushButton()
 		forgetPsdBtn.setText('忘记密码')
+		forgetPsdBtn.clicked.connect(lambda :self.btnAction(forgetPsdBtn))
 		forgetPsdBtn.hide()
 
 		registeredBtn = QPushButton()
@@ -118,7 +124,10 @@ class MainWidget(QWidget):
 		self.bottomLayout.addWidget(forgetPsdBtn,1,2)
 		self.bottomLayout.addWidget(autoLoginBtn, 2, 1)
 		self.bottomLayout.addWidget(registeredBtn, 2, 2)
-
+	def btnAction(self,btn):
+		if btn.text() =='忘记密码':
+			# 跳转到网页
+			QDesktopServices.openUrl(QUrl('http:://www.baidu.com'))
 	def jianTouAction(self,btn):
 		print('btn:',btn.isChecked(),self.bottomLayout.itemAt(0))
 		if btn.isChecked() :
