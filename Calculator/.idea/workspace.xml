@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="181d9aef-4d02-411c-b331-6b9ce0f998c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainWidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainWidget.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qq test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../qq test/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../资料/PyQt5的安装.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../资料/PyQt5的安装.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../资料/~$SS常用样式.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../资料/~$样式表qss.docx" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,8 +27,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MainWidget.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="21" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="21" />
+            <state relative-caret-position="403">
+              <caret line="47" column="41" selection-start-line="47" selection-start-column="41" selection-end-line="47" selection-end-column="41" />
+              <folding>
+                <element signature="e#0#102#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -87,10 +85,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="285" />
-    <option name="y" value="23" />
+    <option name="x" value="-5" />
+    <option name="y" value="93" />
     <option name="width" value="1241" />
-    <option name="height" value="724" />
+    <option name="height" value="721" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -197,14 +195,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-54" y="23" width="1241" height="726" extended-state="0" />
+    <frame x="15" y="23" width="1241" height="721" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49902534" visible="true" weight="0.24836065" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49902534" visible="true" weight="0.24836065" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.50097466" side_tool="true" weight="0.26672536" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.20662461" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2082671" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -293,8 +292,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/MainWidget.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="21" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="21" />
+        <state relative-caret-position="403">
+          <caret line="47" column="41" selection-start-line="47" selection-start-column="41" selection-end-line="47" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#102#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

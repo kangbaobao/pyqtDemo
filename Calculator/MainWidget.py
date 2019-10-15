@@ -33,9 +33,9 @@ class MianWiget(QWidget):
 		self.setLayout(mainLayout)
 
 		#toplayout 展示上面的输入内容
-		topLayout = QHBoxLayout()
-		topLayout.setContentsMargins(5,5,5,0)
-		mainLayout.addLayout(topLayout)
+		# topLayout = QHBoxLayout()
+		# topLayout.setContentsMargins(5,5,5,0)
+		# mainLayout.addLayout(topLayout)
 		self.showLab = QLabel('0')
 		font = QFont()
 		font.setFamily('宋体')
@@ -44,7 +44,9 @@ class MianWiget(QWidget):
 
 		self.showLab.setFont(font)
 		self.showLab.setFixedHeight(40)
-		topLayout.addWidget(self.showLab)
+		self.showLab.setContentsMargins(8,5,8,0)
+		mainLayout.addWidget(self.showLab)
+		# topLayout.addWidget(self.showLab)
 
 		self.showLab.setAlignment(Qt.AlignRight|Qt.AlignVCenter)
 		palette = QPalette()
