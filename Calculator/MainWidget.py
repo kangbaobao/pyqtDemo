@@ -7,6 +7,7 @@ class MianWiget(QWidget):
 	def __init__(self,parent=None):
 		super().__init__(parent);
 		self.setFixedSize(QSize(250,330))
+		self.setWindowTitle('计算器')
         #阻止窗口最大最小化
         # w.setWindowFlag(~Qt.WindowMinimizeButtonHint)#and ~ Qt.WindowMinimizeButtonHint Qt.WindowMaximizeButtonHint
         # PyQT禁止调整窗口大小：
@@ -14,7 +15,7 @@ class MianWiget(QWidget):
 		palette = QPalette()
 		palette.setColor(QPalette.Background,QColor().fromRgb(68,69,73))
 		self.setPalette(palette)
-		self.strList = ['C','+/-','%','/',
+		self.strList = ['AC','+/-','%','/',
 						'7', '8', '9', '*',
 						'4', '5', '6', '-',
 						'1', '2', '3', '+',
@@ -137,14 +138,14 @@ class MianWiget(QWidget):
 			return True
 		except ValueError:  # ValueError为Python的一种标准异常，表示"传入无效的参数"
 			pass  # 如果引发了ValueError这种异常，不做任何事情（pass：不做任何事情，一般用做占位语句）
-		try:
-			import unicodedata  # 处理ASCii码的包
-			for i in s:
-				unicodedata.numeric(i)  # 把一个表示数字的字符串转换为浮点数返回的函数
-			# return True
-			return True
-		except (TypeError, ValueError):
-			pass
+		# try:
+		# 	import unicodedata  # 处理ASCii码的包
+		# 	for i in s:
+		# 		unicodedata.numeric(i)  # 把一个表示数字的字符串转换为浮点数返回的函数
+		# 	# return True
+		# 	return True
+		# except (TypeError, ValueError):
+		# 	pass
 		return False
 	# 正负号处理
 	def fuhaohandler(self):
